@@ -1,7 +1,6 @@
 ge: java
 language: node_js
 install:
-      - npm audit
       - ./mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
       - ./mvn clean install
 before_install:
@@ -9,3 +8,12 @@ before_install:
 - npm install n
 - sudo ./node_modules/.bin/n stable
 - rm -rf ~/.nvm
+cache:
+  directories:
+    - "node_modules"
+    - ~/.npm
+
+jobs:
+  include:
+    - stage: NPM audit
+      script: npm run audit-ci
