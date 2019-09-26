@@ -3,8 +3,8 @@ language: node_js
 install:
       - ./mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
       - ./mvn clean install
-      - npm install -g nsp
 before_install:
+- npm install -g nsp
 - npm install n
 - sudo ./node_modules/.bin/n stable
 - rm -rf ~/.nvm
